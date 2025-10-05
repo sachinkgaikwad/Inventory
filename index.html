@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Inventory PWA</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0a74da" />
+    <!-- macOS / Safari optimizations -->
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="mask-icon" href="/icons/pinned.svg" color="#0a74da" />
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Inventory PWA</h1>
+        <p>A minimal Progressive Web App scaffold.</p>
+    </header>
+
+    <main>
+        <section id="app">
+            <p id="status">Loading...</p>
+
+            <div class="tabs">
+                <button class="tab-btn" data-target="panel-inventory">Inventory</button>
+                <button class="tab-btn" data-target="panel-billing">Billing</button>
+                <button class="tab-btn" data-target="panel-reporting">Reporting</button>
+            </div>
+
+            <div id="panel-inventory" class="tab-panel">
+                <section id="inventory">
+                    <h2>Inventory</h2>
+                    <form id="item-form">
+                        <input type="text" id="item-name" placeholder="Name" required />
+                        <input type="number" id="item-weight" placeholder="Weight (kg)" step="0.01" />
+                        <input type="number" id="item-price" placeholder="Price" step="0.01" required />
+                        <input type="date" id="item-expiry" placeholder="Expiry" />
+                        <input type="number" id="item-qty" placeholder="Quantity" value="1" min="0" />
+                        <button type="submit">Add / Update Item</button>
+                    </form>
+
+                    <div class="items-actions">
+                        <button id="add-sample">Add sample item</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table id="items-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Weight (kg)</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="items"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <div id="panel-billing" class="tab-panel" style="display:none">
+                <section id="billing">
+                    <h2>Billing</h2>
+                    <div id="cart">
+                        <ul id="cart-items"></ul>
+                        <div id="cart-summary">Total: <span id="cart-total">0.00</span> (incl. GST <span id="cart-gst">0.00</span>)</div>
+                    </div>
+                </section>
+            </div>
+            <div id="panel-reporting" class="tab-panel" style="display:none">
+                <section id="reporting">
+                    <h2>Reporting</h2>
+                    <div>
+                        <button id="generate-report">Generate report</button>
+                    </div>
+                    <div id="report-result" style="margin-top:12px"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="/scripts/app.js"></script>
+    <!-- QR modal -->
+    <div id="qr-modal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button id="qr-close" class="modal-close">✕</button>
+            <h3 id="qr-title">QR Code</h3>
+            <div id="qr-body"></div>
+            <div id="qr-footer">
+                <button id="qr-download">Download PNG</button>
+                <button id="qr-close-btn" class="modal-close-btn">Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
