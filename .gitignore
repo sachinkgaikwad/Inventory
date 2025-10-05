@@ -26,3 +26,24 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# macOS
+# Icon files and resource forks
+.DS_Store
+.AppleDouble
+Icon\r
+._*
+
+# macOS system files
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.DocumentRevisions-V100
+.VolumeIcon.icns
+
+# macOS Time Machine
+.AppleDB
+.AppleDesktop
+.vscode/
